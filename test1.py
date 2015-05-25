@@ -2,12 +2,12 @@ import flickr_api as f
 import sys
 import re
 
-names = True
+names = False
 
 u = f.Person.findByUserName('What Photos Look Like')
 
 badges = {}
-for p in u.getPhotos(tags=['liquidity'],per_page=400):
+for p in u.getPhotos(tags=['liquidity'],per_page=3):
     n = 0 
     print '--- %s -------' % (p.title)
     for c in p.getComments():
@@ -41,13 +41,16 @@ for p in u.getPhotos(tags=['liquidity'],per_page=400):
 
 # print dir(c)
 
+bk = badges.keys()
+
 t = 0
-for b in badges:
+for b in bk:
     t += badges[b]
 
-print '%d badges in total' % (t)
+print '%d badges in total with %d different images' % (t,len(bk))
 
-for b in sorted(badges, key=lambda b: badges[b]):
+
+for b in sorted(bk, key=lambda b: badges[b]):
     try:
         print "'%s': %d badges" % (b,badges[b])
     except:
