@@ -5,8 +5,19 @@ print '-'*50
 
 renames = {\
 	'madbaddangeroustoknowbyronsylviebenicenov282010intellectualpropertyrightsretained': 'Lord Byron',
+	'madbaddangeroustoknowbyronsylviebe nicenov282010intellectualpropertyrightsretained': 'Lord Byron',
 	'&amp;quote;ua': 'URBAN ARTE',
+	'www.flickr.com/groups/la_creme_de_la_creme': 'La creme de la creme',
+	'NUMBER 9 DREAM &#9824; Post 1 - Comment on 1&#9824; ': "Number 9 Dream",
+	' [NUMBER 9 DREAM &#9824; Post 1 - Comment on 1&#9824; ': "Number 9 Dream",
+	'Crazy &amp; Geniuses Shot&quot;&gt;A Crazy &amp; Geniuses Image!!! ~ ': 'folli e geni',
+	' This great piece of Street Art was seen in &quot;Street Photography and Photographers rights - Post 1 - Comment 1 &quot;': "Street Photo &amp; Photographers Rights",
+	'www.flickr.com/groups/flickrfavoritecityandstreet/pool/': 'Favorite City &amp; Street',
 	'2201606@N24': 'Unsuspecting Protagonists',
+	' <a> [blackandwhite the essence</a> [ 2 awards? Please post here!': 'Essence of Black &amp; White',
+	' abstract_ photo/ post 1 = comment 2': 'Abstract Photo',
+	' ...e x q u i s i t e a c h i e v e m e n t ! THANK YOU FOR POSTING IT.': '!Art and Photography',
+	'www.flickr.com/groups/ivory_and_ebony/': 'Ivory and Ebony',
 	'1575512@N25': 'Creative B&W Artwork' }
 
 
@@ -201,7 +212,8 @@ for p in debadgr.tagged_pix(PerPage=400):
 		n,t,l = seek_badge_data(c.text,'',0,'')
 		if (n == ''):
 			if (ct == 0):
-				print '-- %s %s ' % (p.title,'-'*50)
+				pass
+				# print '-- %s %s ' % (p.title,'-'*50)
 			ct += 1
 			#print 'Comment "%s"' % (c.text.encode('ascii','ignore')) # hide
 		else:
