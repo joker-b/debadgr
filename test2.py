@@ -8,6 +8,7 @@ renames = {\
 	'madbaddangeroustoknowbyronsylviebe nicenov282010intellectualpropertyrightsretained': 'Lord Byron',
 	'&amp;quote;ua': 'URBAN ARTE',
 	'www.flickr.com/groups/la_creme_de_la_creme': 'La creme de la creme',
+	'www.flickr.com/groups/la_creme_de_la_creme/': 'La creme de la creme',
 	'NUMBER 9 DREAM &#9824; Post 1 - Comment on 1&#9824; ': "Number 9 Dream",
 	' [NUMBER 9 DREAM &#9824; Post 1 - Comment on 1&#9824; ': "Number 9 Dream",
 	'Crazy &amp; Geniuses Shot&quot;&gt;A Crazy &amp; Geniuses Image!!! ~ ': 'folli e geni',
@@ -15,9 +16,32 @@ renames = {\
 	'www.flickr.com/groups/flickrfavoritecityandstreet/pool/': 'Favorite City &amp; Street',
 	'2201606@N24': 'Unsuspecting Protagonists',
 	' <a> [blackandwhite the essence</a> [ 2 awards? Please post here!': 'Essence of Black &amp; White',
+	' [bl ackandwhite the essence': 'Essence of Black and White',
+	' <a> Another great photo from [The Monochrome Mind</a>.': 'The Monochrome Mind',
+	' <a> [blackandwhite the essence': 'The Essence of Black and White',
 	' abstract_ photo/ post 1 = comment 2': 'Abstract Photo',
 	' ...e x q u i s i t e a c h i e v e m e n t ! THANK YOU FOR POSTING IT.': '!Art and Photography',
+	'https://flickr.com/groups/926189@N24': '!Art and Photography',
+	'www.flickr.com/groups/for_the_pleasure_of_black_and_whit': 'The Pleasure of Black and White',
 	'www.flickr.com/groups/ivory_and_ebony/': 'Ivory and Ebony',
+	'PHotoExpr esin': 'PhotoExpression',
+	'Black And White Feelings Post 1 Award 3': 'Black and White Feelings',
+	'Flou &amp; Fil ': 'Flou &amp; Fil&eacute;',
+	'bluemoongallery': 'Blue Moon Gallery',
+	'www.flickr.com/groups/nibble_art/': 'Nibble Art',
+	'Black And White Feelings Post 1 Award 3 El cual se vera asi:': 'Black and White Feelings',
+	'www.flickr.com/groups/for_the_pleasure_of_black_and_white_': 'For the Pleasure ofg Black and White',
+	'artistcom': 'artist.com',
+	'PHotoExpr esin': 'PhotoExpression',
+	'PHotoExpr esin/': 'PhotoExpression',
+	'www.flickr.com/groups/streetphotographersociety/': 'Street Photo Society',
+	'1830614@N22': "Absolut Monochrome",
+	'www.flickr.com/groups/1609077@N23/pool/': 'zwartwit',
+	'&quot;ARTSHOW&quot; - invited images only -': 'ArtShow',
+	'www.flickr.com/groups/art_and_photography/': 'Art &amp; Photography',
+	'www.flickr.com/groups/2674982@N25/': "Le noir n'est pas si noir",
+	'www.flickr.com/groups/2101863@N20/': 'A Journey in Black and White',
+	'www.flickr.com/groups/for_the_pleasure_of_black_and_white_': 'The Pleasure of B&amp;W',
 	'1575512@N25': 'Creative B&W Artwork' }
 
 
@@ -192,7 +216,7 @@ def seek_badge_data(Txt,Candidate,Level,Link):
 		if  name == '': # no name?
 			name = re.sub('https://www.flickr.com/groups/','',link)
 			name = re.sub('/$','',name)
-		name = renames.get(name,name)	
+		name = renames.get(name,name)
 		try:
 			name,newText,link = seek_badge_data(rem,name,nl,link)
 		except:
@@ -222,6 +246,8 @@ for p in debadgr.tagged_pix(PerPage=400):
 			bct += 1
 			# pass
 			if l != '':
+				n = re.sub(r'</?a>','',n)
+				n = re.sub(r'\[','',n)
 				print '<a href="%s">%s</a>' % (l,n)
 			else:
 				print '<!-- %s -->' % (n)
